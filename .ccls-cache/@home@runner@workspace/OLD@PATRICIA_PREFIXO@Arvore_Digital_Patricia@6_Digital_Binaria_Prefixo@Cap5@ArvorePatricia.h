@@ -11,7 +11,7 @@
 #include "Operacoes/4_buscarInfo_PATRICIA.h"
 #include "Operacoes/12_desenhaArvore_PATRICIA.h"
 
-#include "ExemploArvore_PATRICIA.c"
+//#include "ExemploArvore_PATRICIA.c"
 
 #include <math.h>
 #include <stdbool.h>

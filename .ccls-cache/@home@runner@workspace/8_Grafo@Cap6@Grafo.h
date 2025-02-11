@@ -27,7 +27,7 @@
 #include "Operacoes/9_existeCaminho.h"
 #include "Operacoes/10_getCaminho.h"
 #include "Operacoes/11_buscarVerticesIncidentes.h"
-
+#include "Operacoes/12_colorirGrafo.h"
 /*
 #include "Operacoes/11_existeCaminhoHamiltoniano.h"
 #include "Operacoes/12_existeCaminhoEuleriano.h"

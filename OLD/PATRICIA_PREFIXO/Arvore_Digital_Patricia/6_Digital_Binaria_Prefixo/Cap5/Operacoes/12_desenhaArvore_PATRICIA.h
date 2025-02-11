@@ -8,14 +8,14 @@
 
 #define ESPACO 5
 
-void desenharArvorePatriciaRecursivo(pNohPatricia raiz, int profundidade, char *caminho, int direita) {
+void desenharArvorePatriciaRecursivo(pNohPatricia raiz, int profundidade, char *caminho, int direita, FuncaoImpressao fi) {
     if (raiz == NULL) {
         return;
     }
 
     profundidade++;
 
-    desenharArvorePatriciaRecursivo(raiz->direita, profundidade, caminho, 1);
+    desenharArvorePatriciaRecursivo(raiz->direita, profundidade, caminho, 1, fi);
 
     if (profundidade >= 2) {
         caminho[profundidade - 2] = (direita) ? 1 : 0;
@@ -42,21 +42,19 @@ void desenharArvorePatriciaRecursivo(pNohPatricia raiz, int profundidade, char *
     if (raiz->ehFolha) {
         printf(" [%s]\n", raiz->chave ? raiz->chave : "(NULL)");
     } else {
-        printf(" (bit %d)\n", raiz->indice);
+        printf(" (%d)\n", raiz->indice);
     }
 
-    desenharArvorePatriciaRecursivo(raiz->esquerda, profundidade, caminho, 0);
+    desenharArvorePatriciaRecursivo(raiz->esquerda, profundidade, caminho, 0, fi);
 }
 
-void desenharArvorePatricia(pDPatricia arvore) {
+void desenharArvorePatricia(pDPatricia arvore, FuncaoImpressao fi) {
     if (arvore == NULL || arvore->raiz == NULL) {
         return;
     }
 
     char caminho[255] = {0};
-    printf("\n--- Estrutura da Árvore Patricia ---\n");
-    desenharArvorePatriciaRecursivo(arvore->raiz, 0, caminho, 0);
-    printf("------------------------------------\n");
+    desenharArvorePatriciaRecursivo(arvore->raiz, 0, caminho, 0, fi);
 }
 
 #endif
