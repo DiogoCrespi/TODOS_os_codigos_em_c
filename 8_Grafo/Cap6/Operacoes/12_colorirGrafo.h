@@ -3,8 +3,8 @@
 
 #include "0_structs.h"
 #include "../Grafo.h"
-//void imprimeVertice(void *info1);
-
+void imprimeVertice(void *info1);
+void mostrarGrafoColorido(pDGrafo grafo);
 /* --------------------------- */
 void colorirGrafo(pDGrafo grafo, int (*compara)(void *, void *)) {
     if (!grafo || !grafo->listaVertices) return;
