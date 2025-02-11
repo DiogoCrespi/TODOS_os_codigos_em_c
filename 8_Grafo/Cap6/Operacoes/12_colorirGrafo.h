@@ -4,6 +4,8 @@
 #include "0_structs.h"
 #include "4_mostrarGrafo.h"
 
+void imprimeVertice(void *info1);
+
 /* --------------------------- */
 void colorirGrafo(pDGrafo grafo, int (*compara)(void *, void *)) {
     if (!grafo || !grafo->listaVertices) return;
