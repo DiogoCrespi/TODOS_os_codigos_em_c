@@ -1,6 +1,6 @@
 #ifndef BUSCA_PROFUNDIDADE_H
 #define BUSCA_PROFUNDIDADE_H
-
+#include "../Grafo.h"
 /* --------------------------- */
 void buscaEmProfundidade(pDGrafo grafo, FuncaoComparacao fc, FuncaoImpressao fi){
 
@@ -10,21 +10,21 @@ void buscaEmProfundidade(pDGrafo grafo, FuncaoComparacao fc, FuncaoImpressao fi)
    verticesPendentes = criarPilha();
    verticesVisitados = criarLista();
 
-   /* empilha o primeiro vértice do grafo (ou seja, o primeiro vértice da lista) */
+   /* empilha o primeiro vï¿½rtice do grafo (ou seja, o primeiro vï¿½rtice da lista) */
    empilharInfo(verticesPendentes, grafo->listaVertices->primeiro->info);
 
-   /* processa todos os vértices da pilha */
+   /* processa todos os vï¿½rtices da pilha */
    while(pilhaVazia(verticesPendentes)!=0)
    {
        pVertice vAtual = desempilharInfo(verticesPendentes);
 
-       /* visita o vertice se ainda não foi visitado */
+       /* visita o vertice se ainda nï¿½o foi visitado */
        if (contemInfo(verticesVisitados, vAtual, fc) == 0){
           fi(vAtual);
           incluirInfo(verticesVisitados, vAtual);
        }
 
-       /* empilha todas as adjacências do vértice atual que não foram visitadas */
+       /* empilha todas as adjacï¿½ncias do vï¿½rtice atual que nï¿½o foram visitadas */
        pNoh atual = vAtual->listaAdjacencias->primeiro;
        while(atual != NULL){
           if (contemInfo(verticesVisitados, atual->info, fc) == 0){

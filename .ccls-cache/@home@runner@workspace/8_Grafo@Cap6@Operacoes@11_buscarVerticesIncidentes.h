@@ -1,6 +1,6 @@
 #ifndef BUSCAR_VERTICES_INCIDENTES_H
 #define BUSCAR_VERTICES_INCIDENTES_H
-
+#include "../Grafo.h"
 /* --------------------------- */
 pDLista buscarVerticesIncidentes(pDGrafo grafo, pVertice vDest, FuncaoComparacao fc){
 

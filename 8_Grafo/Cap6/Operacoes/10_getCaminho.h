@@ -1,6 +1,6 @@
 #ifndef GET_CAMINHO_H
 #define GET_CAMINHO_H
-
+#include "../Grafo.h"
 /* --------------------------- */
 pDLista getCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, pDLista caminhoParcial,
                             FuncaoComparacao fc, FuncaoAlocacao fa){
@@ -10,12 +10,12 @@ pDLista getCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, pDLis
        return caminhoParcial;
    }
 
-   // busca todos os vértices que levam a vDestino e
+   // busca todos os vï¿½rtices que levam a vDestino e
    // dispara uma chamada recursiva para cada um deles
    pDLista verticesIncidentes = buscarVerticesIncidentes(grafo, vDest, fc);
 
    if (verticesIncidentes->quantidade == 0)
-      // não é um caminho possível
+      // nï¿½o ï¿½ um caminho possï¿½vel
       return NULL;
 
    int cont = 1;
@@ -25,7 +25,7 @@ pDLista getCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, pDLis
       pVertice verticeIncidente  = (pVertice) buscarInfoPos(verticesIncidentes, cont);
       cont++;
 
-      // duplica a lista para representar o novo caminho possível
+      // duplica a lista para representar o novo caminho possï¿½vel
       pDLista caminhoIncrementado = duplicarLista(caminhoParcial, fa);
       incluirInfo(caminhoIncrementado, verticeIncidente);
 
@@ -48,7 +48,7 @@ pDLista getCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, pDLis
 pDLista getCaminho(pDGrafo grafo, void *idOrig, void *idDest,
                    FuncaoComparacao fc, FuncaoAlocacao fa){
 
-   // busca os vértices para a origem e destino
+   // busca os vï¿½rtices para a origem e destino
    pVertice vOrigem  = buscarVertice(grafo, idOrig, fc);
    pVertice vDestino = buscarVertice(grafo, idDest, fc);
 

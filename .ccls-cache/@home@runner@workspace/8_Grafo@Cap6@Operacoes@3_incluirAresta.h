@@ -1,6 +1,6 @@
 #ifndef INCLUIR_ARESTA_H
 #define INCLUIR_ARESTA_H
-
+#include "../Grafo.h"
 /* --------------------------- */
 void incluirAresta (pDGrafo grafo, void *vOrig, void *vDest, FuncaoComparacao fc){
 
@@ -8,7 +8,7 @@ void incluirAresta (pDGrafo grafo, void *vOrig, void *vDest, FuncaoComparacao fc
      pVertice vDestino = buscarVertice(grafo, vDest, fc);
 
      if (vOrigem == NULL || vDestino == NULL){
-        printf("Um dos vértices não existe! \n");
+        printf("Um dos vï¿½rtices nï¿½o existe! \n");
         return;
      }
      incluirInfo(vOrigem->listaAdjacencias, vDestino);

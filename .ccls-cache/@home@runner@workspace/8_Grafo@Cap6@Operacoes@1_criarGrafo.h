@@ -1,6 +1,6 @@
 #ifndef CRIAR_GRAFO_H
 #define CRIAR_GRAFO_H
-
+#include "../Grafo.h"
 /* --------------------------- */
 pDGrafo criarGrafo(){
 

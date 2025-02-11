@@ -2,7 +2,8 @@
 #define COLORIR_GRAFO_H
 
 #include "0_structs.h"
-#include "4_mostrarGrafo.h"
+#include "../Grafo.h"
+//void imprimeVertice(void *info1);
 
 /* --------------------------- */
 void colorirGrafo(pDGrafo grafo, int (*compara)(void *, void *)) {
@@ -47,8 +48,8 @@ void colorirGrafo(pDGrafo grafo, int (*compara)(void *, void *)) {
         atual = atual->prox;
     }
 
-    printf("\nColoração do grafo:\n");
-    mostrarGrafo(grafo, imprimeVertice);
+    printf("\nColoracao do grafo:\n");
+    mostrarGrafoColorido(grafo);
 }
 
 #endif

@@ -1,13 +1,13 @@
 #ifndef EXISTE_CAMINHO_H
 #define EXISTE_CAMINHO_H
-
+#include "../Grafo.h"
 /* ----------------------------------------------------------------
-A estratégia empregada para a verificação de existência do caminho
-parte do vértice de destino e procede com a busca pelos vértices
-que incidem sobre este, e assim sucessivamente, até o momento
-que um dos vértices incidentes seja o vértice de origem.
-Resumindo, a busca é feita no sentido do vértice de destino para o
-vértice de origem.
+A estratï¿½gia empregada para a verificaï¿½o de existï¿½ncia do caminho
+parte do vï¿½rtice de destino e procede com a busca pelos vï¿½rtices
+que incidem sobre este, e assim sucessivamente, atï¿½ o momento
+que um dos vï¿½rtices incidentes seja o vï¿½rtice de origem.
+Resumindo, a busca ï¿½ feita no sentido do vï¿½rtice de destino para o
+vï¿½rtice de origem.
 -------------------------------------------------------------------*/
 int existeCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, FuncaoComparacao fc){
 
@@ -16,11 +16,11 @@ int existeCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, Funcao
        return 1; // return true
    }
 
-   // busca todos os vértices que levam a vDestino e
+   // busca todos os vï¿½rtices que levam a vDestino e
    // dispara uma chamada recursiva para cada um deles
    pDLista verticesIncidentes = buscarVerticesIncidentes(grafo, vDest, fc);
 
-   // não é um caminho possível
+   // nï¿½o ï¿½ um caminho possï¿½vel
    if (verticesIncidentes->quantidade == 0){
       return 0;   // return false
    }
@@ -45,7 +45,7 @@ int existeCaminhoRecursivo(pDGrafo grafo, pVertice vOrig, pVertice vDest, Funcao
 /* --------------------------- */
 int existeCaminho(pDGrafo grafo, void *idOrig, void *idDest, FuncaoComparacao fc){
 
-   // busca os vértices para a origem e destino
+   // busca os vï¿½rtices para a origem e destino
    pVertice vOrigem  = buscarVertice(grafo, idOrig, fc);
    pVertice vDestino = buscarVertice(grafo, idDest, fc);
 

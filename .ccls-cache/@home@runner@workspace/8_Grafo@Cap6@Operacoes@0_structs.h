@@ -1,6 +1,6 @@
 #ifndef STRUCTS_GRAFO_H
 #define STRUCTS_GRAFO_H
-
+#include "../Grafo.h"
 struct dGrafo{
 
    pDLista listaVertices;
