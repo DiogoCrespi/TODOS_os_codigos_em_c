@@ -1,65 +1,43 @@
-#ifndef INCLUIR_INFO_PREFIXO_H
-#define INCLUIR_INFO_PREFIXO_H
-#include "../ArvorePrefixo.h"
-int buscarInfoPrefixo (pDPrefixo, char [], int);
 
-/* --------------------------*/
-pNohPrefixo incluirInfoPrefixoRecursivo(pNohPrefixo raiz, char chave[], int k, int* L){
+#ifndef INSERIR_INFO_PATRICIA_H
+#define INSERIR_INFO_PATRICIA_H
 
-  pNohPrefixo novo;
+#include "../ArvorePatricia.h"
 
-  (*L)++;
+// Inserir recursivamente em uma árvore Patricia
+struct nohPatricia* inserirInfoPatriciaRecursivo(struct nohPatricia* noh, char chave[], int k, int l) {
+    if (noh == NULL) {
+        return criarNohPatricia(1, l); // Nó terminal
+    }
 
-  // caso base - todos os d�gitos foram colocados na �rvore
-  if (*L == k){
+    if (noh->terminal) {
+        int i;
+        for (i = 0; i < k && chave[i] == '0'; i++);
+        if (i == k) return noh; // Chave já existe
 
-     novo = criarNohPrefixo(1);   // cria um terminal
-     return novo;
-  }
+        struct nohPatricia* novo = criarNohPatricia(1, i);
+        if (chave[i] == '0') {
+            novo->esquerda = noh;
+        } else {
+            novo->direita = noh;
+        }
+        return novo;
+    }
 
-   if (raiz == NULL){
-     // cria um novo n�h interno para acomodar o pr�ximo d�gito da chave
-     novo = criarNohPrefixo(0);
-     if (chave[*L] == '0'){
-         // pr�ximo s�mbolo da chave, pois L come�ou com ZERO
-         novo->esquerda = incluirInfoPrefixoRecursivo(novo->esquerda, chave, k, L);
-     }
-     else {
-        novo->direita = incluirInfoPrefixoRecursivo(novo->direita, chave, k, L);
-     }
+    if (chave[noh->indice] == '0') {
+        noh->esquerda = inserirInfoPatriciaRecursivo(noh->esquerda, chave, k, l);
+    } else {
+        noh->direita = inserirInfoPatriciaRecursivo(noh->direita, chave, k, l);
+    }
 
-     return novo;
-  }
-
-  // caso recursivo
-  if (chave[*L] == '0'){
-     raiz->esquerda = incluirInfoPrefixoRecursivo(raiz->esquerda, chave, k, L);
-  }
-  else{
-    raiz->direita = incluirInfoPrefixoRecursivo(raiz->direita, chave, k, L);
-  }
-
-  return raiz;
-
+    return noh;
 }
 
-/* ----------------------------------------------------------*/
-int incluirInfoPrefixo (pDPrefixo arvore, char chave[], int k){
-
-   int L=-1;
-
-   printf("\n Buscando a chave: %s", chave);
-   int r = buscarInfoPrefixo(arvore, chave, k);  // verifica tamb�m se � prefixo
-
-   printf("\n Achou chave ou prefixo= %d \n", r);
-   if (r == 0){
-      // a raiz da �rvore n�o deve ser alterada devido a uma inclus�o
-      incluirInfoPrefixoRecursivo(arvore->raiz, chave, k, &L);
-      return 1;
-   }
-
-   return 0;
+// Inserir chave na árvore Patricia
+int inserirInfoPatricia(struct dPatricia* arvore, char chave[], int k) {
+    arvore->raiz = inserirInfoPatriciaRecursivo(arvore->raiz, chave, k, 0);
+    arvore->quantidadeNohs++;
+    return 1;
 }
 
 #endif
-

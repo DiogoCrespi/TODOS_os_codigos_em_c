@@ -1,26 +1,27 @@
-#ifndef PREFIXO_TAD_H
-#define PREFIXO_TAD_H
+#ifndef PATRICIA_TAD_H
+#define PATRICIA_TAD_H
 /*------------------------------------------*/
 /* tipos de dados                           */
 /*------------------------------------------*/
 /* estrutura do noh da arvore */
-typedef struct nohPrefixo  NohPrefixo;
-typedef NohPrefixo*        pNohPrefixo;
-
+typedef struct nohPatricia NohPatricia;
+typedef NohPatricia *pNohPatricia;
 /* descritor da arvore */
-typedef struct dPrefixo  DPrefixo;
-typedef DPrefixo*        pDPrefixo;
-
+typedef struct dPatricia DPatricia;
+typedef DPatricia *pDPatricia;
 /*------------------------------------------*/
 /* operacoes                                */
 /*------------------------------------------*/
-pDPrefixo  criarArvorePrefixo();
+pDPatricia criarArvorePatricia();
 
-int  incluirInfoPrefixo (pDPrefixo, char[], int);
-int  excluirInfoPrefixo (pDPrefixo, char[], int);
-int  buscarInfoPrefixo  (pDPrefixo, char[], int);
+int adicionarChavePatricia(pDPatricia arvore, char *chave);
 
-void desenhaArvorePrefixo(pDPrefixo);
+int removerChavePatricia(pDPatricia arvore, char *chave);
+
+int buscarChavePatricia(pDPatricia arvore, char *chave);
+
+void desenharArvorePatricia(pDPatricia arvore);
+
 
 #endif
 
