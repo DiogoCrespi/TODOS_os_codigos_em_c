@@ -3,7 +3,7 @@
 
 #include "../ArvorePatricia.h"
 
-// Função recursiva para remover uma chave da árvore Patricia
+
 pNohPatricia removerChavePatriciaRecursivo(pNohPatricia raiz, char *chave, int *removido) {
     if (raiz == NULL) {
         *removido = 0;
@@ -21,16 +21,14 @@ pNohPatricia removerChavePatriciaRecursivo(pNohPatricia raiz, char *chave, int *
         return raiz;
     }
 
-    // Caminho correto baseado no índice de bits
     if (obterBit(chave, raiz->indice) == 0) {
         raiz->esquerda = removerChavePatriciaRecursivo(raiz->esquerda, chave, removido);
     } else {
         raiz->direita = removerChavePatriciaRecursivo(raiz->direita, chave, removido);
     }
 
-    // Se uma chave foi removida, verificar se o nó interno deve ser eliminado
     if (*removido) {
-        // Se um dos filhos for NULL, substituir o nó pelo filho restante
+ 
         if (raiz->esquerda == NULL || raiz->direita == NULL) {
             pNohPatricia filhoRestante = (raiz->esquerda != NULL) ? raiz->esquerda : raiz->direita;
             free(raiz);
@@ -41,10 +39,9 @@ pNohPatricia removerChavePatriciaRecursivo(pNohPatricia raiz, char *chave, int *
     return raiz;
 }
 
-// Função pública para remover uma chave da árvore Patricia
 int removerChavePatricia(pDPatricia arvore, char *chave) {
     if (arvore == NULL || arvore->raiz == NULL || chave == NULL) {
-        return 0; // Árvore vazia ou chave inválida
+        return 0; 
     }
 
     int removido = 0;

@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
+#include <string.h>
 
 /* ---------------------------------------- */
 /* Tipo de dado INT */
@@ -103,27 +105,27 @@ void imprimirChar(void *info)
 /* Funções auxiliares */
 /* ---------------------------------------- */
 // Função para obter o bit na posição i de uma chave
-int obterBit(char *chave, int i)
+int obterBit2(char *chave, int i)
 {
    int byteIndex = i / 8;
    int bitIndex = 7 - (i % 8);
    return (chave[byteIndex] & (1 << bitIndex)) != 0;
 }
 
+
 static inline int obterBit(const char *chave, int indice) {
     if (indice < 0 || chave == NULL) {
-        return 0;  // Retorna 0 para bits inválidos (evita acessos incorretos)
+        return 0; 
     }
-    
-    int byte = indice / 8;  // Qual byte acessar?
-    int bit = indice % 8;   // Qual bit dentro do byte?
+
+    int byte = indice / 8;
+    int bit = indice % 8;
 
     if (byte >= strlen(chave)) {
-        return 0; // Se o índice ultrapassa o tamanho da string, assume-se 0
+        return 0;
     }
 
-    return (chave[byte] >> (7 - bit)) & 1; // Retorna o bit correspondente
+    return (chave[byte] >> (7 - bit)) & 1;
 }
-
 
 #endif /* UTILS_H */
