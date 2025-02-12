@@ -1,4 +1,3 @@
-
 #ifndef COLORIR_GRAFO_H
 #define COLORIR_GRAFO_H
 
@@ -13,7 +12,6 @@
 
 // Estrutura de cores para exibição
 const char *cores[MAX_CORES] = {"Azul", "Verde", "Vermelho", "Amarelo", "Laranja", "Roxo", "Ciano", "Rosa", "Marrom", "Cinza"};
-
 /* ------------------------------------------ */
 /* Função para encontrar a menor cor disponível */
 int encontrarMenorCorDisponivel(int corUsada[], int numVertices) {

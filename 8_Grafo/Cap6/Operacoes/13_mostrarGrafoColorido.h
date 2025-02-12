@@ -107,4 +107,108 @@ void mostrarGrafoColorido(pDGrafo grafo) {
     free(matriz);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void imprimirGrafoVisualmente(pDGrafo grafo) {
+    if (!grafo || !grafo->listaVertices) {
+        printf("Erro: Grafo não inicializado.\n");
+        return;
+    }
+
+    int numVertices = grafo->listaVertices->quantidade;
+    if (numVertices % 2 != 0) {
+        printf("Este método é projetado para grafos bipartidos de mesmo tamanho.\n");
+        return;
+    }
+
+    printf("\n=== Representação Visual do Grafo Colorido ===\n");
+
+    // Separando os vértices em dois grupos
+    int metade = numVertices / 2;
+    pVertice grupo1[metade], grupo2[metade];
+
+    pNoh atual = grafo->listaVertices->primeiro;
+    for (int i = 0; i < metade && atual != NULL; i++) {
+        grupo1[i] = (pVertice) atual->info;
+        atual = atual->prox;
+    }
+    for (int i = 0; i < metade && atual != NULL; i++) {
+        grupo2[i] = (pVertice) atual->info;
+        atual = atual->prox;
+    }
+
+    // Cores ANSI
+    const char *coresANSI[] = {
+        "\033[1;31m", // Vermelho
+        "\033[1;32m", // Verde
+        "\033[1;33m", // Amarelo
+        "\033[1;34m", // Azul
+        "\033[1;35m", // Magenta
+        "\033[1;36m", // Ciano
+        "\033[1;37m"  // Branco
+    };
+
+    // Imprimindo os vértices superiores
+    printf("    ");
+    for (int i = 0; i < metade; i++) {
+        int corIndex = grupo1[i]->cor % 7;
+        printf("%s(%d)     \033[0m", coresANSI[corIndex], *((int *)grupo1[i]->info));
+    }
+    printf("\n");
+
+    // Imprimindo as conexões
+    printf("     ");
+    for (int i = 0; i < metade; i++) {
+        printf("| \\   / ");
+    }
+    printf("|\n");
+
+    printf("     ");
+    for (int i = 0; i < metade; i++) {
+        printf("|  \\ /  ");
+    }
+    printf("|\n");
+
+    printf("     ");
+    for (int i = 0; i < metade; i++) {
+        printf("|  / \\  ");
+    }
+    printf("|\n");
+
+    printf("     ");
+    for (int i = 0; i < metade; i++) {
+        printf("| /   \\ ");
+    }
+    printf("|\n");
+
+    // Imprimindo os vértices inferiores
+    printf("    ");
+    for (int i = 0; i < metade; i++) {
+        int corIndex = grupo2[i]->cor % 7;
+        printf("%s(%d)     \033[0m", coresANSI[corIndex], *((int *)grupo2[i]->info));
+    }
+    printf("\n");
+}
+
+
 #endif // MOSTRAR_GRAFO_COLORIDO_H

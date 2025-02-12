@@ -140,23 +140,40 @@ int main() {
       }
       getchar();
       break;
-    case 11:
-      printf("\nCriando exemplo de coloração do grafo com amarelo, verde e "
-             "vermelho...\n");
+        case 11:
+            printf("\nCriando um grafo perfeito para coloração...\n");
 
-      int vertices[] = {1, 2, 3, 4};
-      for (int i = 0; i < 4; i++) {
-        incluirVertice(grafo, &vertices[i], comparaVertice);
-      }
-      incluirAresta(grafo, &vertices[0], &vertices[1], comparaVertice);
-      incluirAresta(grafo, &vertices[0], &vertices[2], comparaVertice);
-      incluirAresta(grafo, &vertices[1], &vertices[3], comparaVertice);
-      incluirAresta(grafo, &vertices[2], &vertices[3], comparaVertice);
+            destruirListaInfo(grafo->listaVertices, free);
+            grafo->listaVertices = criarLista();
 
-      mostrarGrafo(grafo, imprimeVertice);
-      colorirGrafo(grafo, comparaVertice);
-      getchar();
-      break;
+            int vertices_perfeitos[] = {1, 2, 3, 4, 5, 6};
+            for (int i = 0; i < 6; i++) {
+                incluirVertice(grafo, &vertices_perfeitos[i], comparaVertice);
+            }
+
+            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[3], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[4], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[0], &vertices_perfeitos[5], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[3], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[4], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[1], &vertices_perfeitos[5], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[3], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[4], comparaVertice);
+            incluirAresta(grafo, &vertices_perfeitos[2], &vertices_perfeitos[5], comparaVertice);
+
+            printf("Grafo criado com sucesso! Estrutura:\n");
+            mostrarGrafo(grafo, imprimeVertice);
+
+            // Chamando a coloração do grafo
+            colorirGrafo(grafo, comparaVertice);
+
+            // Chamando a nova representação gráfica colorida
+            imprimirGrafoVisualmente(grafo);
+
+            getchar();
+            break;
+
+
 
     case 12:
       colorirGrafo(grafo, comparaVertice);
