@@ -12,7 +12,7 @@ void mostrarGrafoColorido(pDGrafo grafo) {
 
     while (atual) {
         pVertice v = (pVertice) atual->info;
-        printf("\033[1;%dm", 31 + v->grau % 6); // Seleciona cor
+        printf("\033[1;%dm", 31 + v->cor % 6); // Usa a cor do vértice
         printf("Vertice %d - Adjacencias: [", *((int *)v->info));
 
         pNoh adj = v->listaAdjacencias->primeiro;
@@ -21,7 +21,7 @@ void mostrarGrafoColorido(pDGrafo grafo) {
             printf("%d ", *((int *)vAdj->info));
             adj = adj->prox;
         }
-        printf("]\033[0m\n"); // Reseta cor
+        printf("]\033[0m\n"); // Reseta a cor
         atual = atual->prox;
     }
 }
