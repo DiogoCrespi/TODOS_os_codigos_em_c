@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const char *cores[] = {"Vermelho", "Verde", "Amarelo", "Azul", "Magenta", "Ciano"};
+extern const char *cores[];
 
 void mostrarGrafoColorido(pDGrafo grafo) {
     if (!grafo || !grafo->listaVertices) {
