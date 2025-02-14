@@ -1,5 +1,0 @@
-#ifndef ARVORE_RUBRO_NEGRA_FUNCAO_H
-#define ARVORE_RUBRO_NEGRA_FUNCAO_H
-
-
-#endif
